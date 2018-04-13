@@ -86,11 +86,13 @@ if [ "$stopEx" == "false" ]; then
 		# Manage equal RetroArch core
 		else
 			mv "./$dirNew/$p" "./$dirCurr"
-			mv "./$dirPrev/$p" "./$dirEq"
+			# mv "./$dirPrev/$p" "./$dirEq"
+			rm "./$dirPrev/$p"
 		fi
 	done <$fileComp
 	
 	for f in "./$dirPrev/"*.$coreExt; do
+		# cp "$f" "./$dirCurr"
 		mv "$f" "./$dirRem"
 	done
 
@@ -109,10 +111,10 @@ if [ "$stopEx" == "false" ]; then
 	if [ -z "$(ls -A ./$dirPrev)" ]; then
 	   rm -r "./$dirPrev"
 	fi
-	rm "./$dirNew/.DS_Store" > /dev/null 2>&1
-	if [ -z "$(ls -A ./$dirNew)" ]; then
-	   rm -r "./$dirNew"
-	fi
+	#rm "./$dirNew/.DS_Store" > /dev/null 2>&1
+	# if [ -z "$(ls -A ./$dirNew)" ]; then
+	#    rm -r "./$dirNew"
+	# fi
 	rm "./$dirDiff/.DS_Store" > /dev/null 2>&1
 	if [ -z "$(ls -A ./$dirDiff)" ]; then
 	   rm -r "./$dirDiff"
